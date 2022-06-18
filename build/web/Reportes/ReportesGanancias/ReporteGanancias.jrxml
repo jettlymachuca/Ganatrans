@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a2fccbe-d621-4ed5-b424-1a93b3dc2e98">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     ganancias.`Carrera` AS Carrera,
+     ganancias.`Ganancias` AS Ganancias,
+     usuario.`Nombre` AS Nombre,
+     vehiculo.`Placa` AS Placa,
+     gastos.`Valor` AS Valor
+FROM
+     `usuario` usuario INNER JOIN `ganancias` ganancias ON usuario.`Id` = ganancias.`IdUsuario`
+     INNER JOIN `vehiculo` vehiculo ON ganancias.`IdVehiculo` = vehiculo.`Id`
+     INNER JOIN `gastos` gastos ON ganancias.`IdGastos` = gastos.`Id`
+     AND vehiculo.`Id` = gastos.`IdVehiculo`]]>
+	</queryString>
+	<field name="Nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Placa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Carrera" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Valor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Ganancias" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="86" y="0" width="70" height="50" uuid="ad01c502-35eb-4b0e-bbe8-d9f433c20569"/>
+				<imageExpression><![CDATA["F:\\Ganatrans\\GanatransWeb\\web\\Reportes\\ReportesGanancias\\LogoVehiculo.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="24" y="56" width="186" height="38" uuid="59594c0d-11e1-4db6-b23e-276a406fd7e9"/>
+				<imageExpression><![CDATA["F:\\Ganatrans\\GanatransWeb\\web\\Reportes\\ReportesGanancias\\LogoLetras.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="266" y="4" width="372" height="70" uuid="6a47fe58-12ec-41e4-bf4d-611c1dd73bc7"/>
+				<imageExpression><![CDATA["F:\\Ganatrans\\GanatransWeb\\web\\Reportes\\ReportesGanancias\\Ganatrans.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="311" y="83" width="190" height="40" uuid="f3f2ec5d-e5c6-4bd2-badb-470803d5fdd3"/>
+				<imageExpression><![CDATA["F:\\Ganatrans\\GanatransWeb\\web\\Reportes\\ReportesGanancias\\Ganacias.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="9a05aa08-6bca-4c0d-9b7a-235f3a42b8e6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="160" height="15" forecolor="#736343" uuid="b71310e1-4921-4164-bdde-e8325f4b56db"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="160" y="0" width="160" height="15" forecolor="#736343" uuid="8565fdda-d654-4576-adfd-c62a609b5654"/>
+				<text><![CDATA[Placa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="0" width="160" height="15" forecolor="#736343" uuid="e7a9c051-127b-4543-9cdf-d24c7f0a937f"/>
+				<text><![CDATA[Carrera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="0" width="160" height="15" forecolor="#736343" uuid="11e6a720-53b2-455b-a26d-94a297428dda"/>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="640" y="0" width="160" height="15" forecolor="#736343" uuid="b0c99b1c-b444-4621-abb2-707432650693"/>
+				<text><![CDATA[Ganancias]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="24e047d9-8340-4d7b-8d04-f80d31ccffac"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="160" height="15" uuid="abd0d39a-0b33-4967-96c4-2ee77e683f15"/>
+					<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="160" y="0" width="160" height="15" uuid="02c26e1a-5353-4518-81d5-bfa9b4dea80f"/>
+					<textFieldExpression><![CDATA[$F{Placa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="320" y="0" width="160" height="15" uuid="6ca0047b-2e1c-497c-b068-7d8e6a82c929"/>
+					<textFieldExpression><![CDATA[$F{Carrera}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="480" y="0" width="160" height="15" uuid="5ef66a91-34a9-4609-9c19-39b3e80091c9"/>
+					<textFieldExpression><![CDATA[$F{Valor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="640" y="0" width="160" height="15" uuid="796e4908-f130-425f-a6be-f53b8968ca80"/>
+					<textFieldExpression><![CDATA[$F{Ganancias}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="d6d53fcb-7dec-4512-b310-01143ee6d40f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="b0e69873-a37a-4e54-92ce-2dc6c70d2987"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="3db76dc3-f385-45b1-8ab6-ddf96b4674d8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="3c8304c3-f074-45f2-8c9d-b29410cca5ca"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="1060d27e-ed2a-4373-ab19-aa9cd1e82bf4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

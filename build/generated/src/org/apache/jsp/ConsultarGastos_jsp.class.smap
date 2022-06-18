@@ -1,0 +1,27 @@
+SMAP
+ConsultarGastos_jsp.java
+JSP
+*S JSP
+*F
++ 0 ConsultarGastos.jsp
+ConsultarGastos.jsp
++ 1 Sesiones.jsp
+Sesiones.jsp
+*L
+5,10:57
+5#1,7:66
+13,5:74
+17,14:79
+30,15:93
+14#0,80:107
+94:187,3
+95,97:190
+192,5:287,3
+197,18:302
+216,18:322
+233,2:340
+235,4:342,3
+239,10:354
+249:364,3
+250,51:367
+*E
